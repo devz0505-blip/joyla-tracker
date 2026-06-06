@@ -6,8 +6,11 @@ on:
   schedule:
     - cron: '0 */4 * * *'
 
+permissions:
+  contents: write
+
 jobs:
-  run:
+  tracker:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +27,7 @@ jobs:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          
+
       - name: Commit last release
         run: |
           git config user.name "github-actions"
